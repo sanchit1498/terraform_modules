@@ -1,14 +1,4 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "4.66.1"
+    variable "my_env" {
+      type        = string
+      description = "this will store the env for my infra"
     }
-  }
-  backend "s3" {
-    bucket = "batch3-demo-state-bucket"
-    key = "terraform.tfstate"
-    region = "us-east-1"
-    dynamodb_table = "batch3-demo-state-table"
-  }
-}
