@@ -1,14 +1,31 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "4.66.1"
-    }
-  }
-  backend "s3" {
-    bucket = "batch3-demo-state-bucket"
-    key = "terraform.tfstate"
-    region = "us-east-1"
-    dynamodb_table = "batch3-demo-state-table"
-  }
+variable "name" {
+  type = string
+}
+
+variable "cidr" {
+  type = string
+}
+
+variable "azs" {
+  type = list(string)
+}
+
+variable "private_subnets" {
+  type = list(string)
+}
+
+variable "public_subnets" {
+  type = list(string)
+}
+
+variable "enable_nat_gateway" {
+  type = bool
+}
+
+variable "enable_vpn_gateway" {
+  type = bool
+}
+
+variable "tags" {
+  type = map(string)
 }
