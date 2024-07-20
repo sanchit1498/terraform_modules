@@ -1,14 +1,9 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "4.66.1"
-    }
-  }
-  backend "s3" {
-    bucket = "batch3-demo-state-bucket"
-    key = "terraform.tfstate"
-    region = "us-east-1"
-    dynamodb_table = "batch3-demo-state-table"
+resource "aws_instance" "my_demo_instance" {
+  count         = var.instance_count
+  ami           = var.ami
+  instance_type = var.instance_type
+  tags = {
+    Name = "${var.my_env}-instance"
+    env  = var.my_env
   }
 }
